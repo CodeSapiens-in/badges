@@ -1,28 +1,20 @@
-# FriendlyEats (Web)
+### Badges with Next.js + Firebase
 
-## Introduction
+The Badges app is for students to showcase the badges earned through our codesapiens community, they can also share the badges in linkedin and other socials.
 
-FriendlyEats is a restaurant recommendation app built on Cloud Firestore.
-For more information about Firestore visit [the docs][firestore-docs].
+#### Run the application
 
-This project is the starting point for the [Cloud Firestore Web Codelab][codelab],
-which will show you how to build the applications step-by-step. If you'd like to
-simply run the finished result, see the [quickstart app][quickstart].
+1. Edit the file `lib/firebase/config.js` and fill in the values from the Firebase console or add those keys and values in your environment
 
-<img src="nextjs-end/friendlyeats-finished.webp" />
+2. In a new terminal tab/window, run:
 
-## Setup
+```sh
+npm i
+npm run dev
+```
 
-Follow the [Cloud Firestore Web Codelab][codelab] to set up this sample.
+4. In your browser, open the URL: `http://localhost:3000`
 
-## License
+#### Use the application
 
-© Google, 2018. Licensed under an [Apache-2](./LICENSE) license.
-
-## Build Status
-
-[![Build Status](https://travis-ci.org/firebase/friendlyeats-web.svg?branch=master)](https://travis-ci.org/firebase/friendlyeats-web)
-
-[codelab]: https://codelabs.developers.google.com/codelabs/firestore-web
-[quickstart]: https://github.com/firebase/quickstart-js/tree/master/firestore
-[firestore-docs]: https://firebase.google.com/docs/firestore/
+1. While on `http://localhost:3000/` within your browser, click the "Sign in" button in the top right corner and sign in.

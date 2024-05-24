@@ -1,4 +1,4 @@
-# Contributing to friendlyeats-web
+# Contributing to badges
 
 We'd love for you to contribute to our source code and to make this project even better than it is today! Here are the guidelines we'd like you to follow:
 
@@ -12,19 +12,19 @@ We'd love for you to contribute to our source code and to make this project even
 
 ## <a name="coc"></a> Code of Conduct
 
-As contributors and maintainers of the friendlyeats-web project, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.
+As contributors and maintainers of the badges project, we pledge to respect everyone who contributes by posting issues, updating documentation, submitting pull requests, providing feedback in comments, and any other activities.
 
 Communication through any of Firebase's channels (GitHub, StackOverflow, Google+, Twitter, etc.) must be constructive and never resort to personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.
 
 We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the project to do the same.
 
-If any member of the community violates this code of conduct, the maintainers of the friendlyeats-web project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
+If any member of the community violates this code of conduct, the maintainers of the badges project may take action, removing issues, comments, and PRs or blocking accounts as deemed appropriate.
 
 If you are subject to or witness unacceptable behavior, or have any other concerns, please drop us a line at samstern@google.com.
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to use the friendlyeats-web, please open a Github issue. If you need help debugging your own app, please please direct these to [StackOverflow][stackoverflow] and use the `firebase` tag.
+If you have questions about how to use the badges, please open a Github issue. If you need help debugging your own app, please please direct these to [StackOverflow][stackoverflow] and use the `firebase` tag.
 
 If you feel that we're missing an important bit of documentation, feel free to
 file an issue so we can help. Here's an example to get you started:
@@ -85,7 +85,7 @@ Please provide any other information below, and attach a screenshot if possible.
 ### Submitting a Pull Request
 Before you submit your pull request consider the following guidelines:
 
-* Search [GitHub](https://github.com/firebase/friendlyeats-web/pulls) for an open or closed Pull Request
+* Search [GitHub](https://github.com/firebase/badges/pulls) for an open or closed Pull Request
   that relates to your submission. You don't want to duplicate effort.
 * Please sign our [Contributor License Agreement (CLA)](#cla) before sending pull
   requests. We cannot accept code without this.
@@ -116,7 +116,7 @@ Before you submit your pull request consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-* In GitHub, send a pull request to `friendlyeats-web:master`.
+* In GitHub, send a pull request to `badges:master`.
 * If we suggest changes then:
   * Make the required updates.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
