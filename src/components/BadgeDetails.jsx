@@ -4,43 +4,18 @@ import React from "react";
 
 
 const BadgeDetails = ({
-	badge,
-	userId,
-	setIsOpen,
-	isOpen,
-	children
+	badge
 }) => {
 	return (
-		<section className="img__section">
-			<img src={badge.photo} alt={badge.name} />
-
-			<div className="actions">
-				{userId && (
-					<img
-						className="review"
-						onClick={() => {
-							setIsOpen(!isOpen);
-						}}
-						src="/review.svg"
-					/>
-				)}
-			</div>
+		<section className="relative h-400 w-full">
+			<img src={badge.photo} alt={badge.name} className="absolute object-cover w-full h-full max-w-none" />
 
 			<div className="details__container">
 				<div className="details">
 					<h2>{badge.name}</h2>
-
-					<div className="badge__rating">
-						<ul>{renderStars(badge.avgRating)}</ul>
-
-						<span>({badge.numRatings})</span>
-					</div>
-
 					<p>
 						{badge.category} | {badge.city}
 					</p>
-					<p>{"$".repeat(badge.price)}</p>
-					{children}
 				</div>
 			</div>
 		</section>

@@ -16,7 +16,6 @@ export default async function Home({ searchParams }) {
 	// ?city=London&category=Indian&sort=Review
 	const {firebaseServerApp} = await getAuthenticatedAppForUser();
 	const badges = await getBadges(getFirestore(firebaseServerApp), searchParams);
-	console.log('badges',badges)
 	return (
 		<main className="main__home">
 			<BadgeListings

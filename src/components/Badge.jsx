@@ -50,10 +50,6 @@ export default function Badge({
     <>
       <BadgeDetails
         badge={badgeDetails}
-        userId={userId}
-        handleBadgeImage={handleBadgeImage}
-        setIsOpen={setIsOpen}
-        isOpen={isOpen}
       >{children}</BadgeDetails>
     </>
   );

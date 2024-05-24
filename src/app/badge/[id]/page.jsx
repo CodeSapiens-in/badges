@@ -10,7 +10,7 @@ export default async function Home({ params }) {
   const badge = await getBadgeById(getFirestore(firebaseServerApp), params.id);
 
   return (
-    <main className="main__badge">
+    <main className="bg-gray-200 min-h-screen">
       <Badge
         id={params.id}
         initialBadge={badge}
