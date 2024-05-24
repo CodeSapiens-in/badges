@@ -101,7 +101,7 @@ function applyQueryFilters(q, { category, city, price, sort }) {
 export async function getBadges(db = db, filters = {}) {
 	let q = query(collection(db, "badges"));
 
-	q = applyQueryFilters(q, filters);
+	// q = applyQueryFilters(q, filters);
 	const results = await getDocs(q);
 	return results.docs.map(doc => {
 		return {
