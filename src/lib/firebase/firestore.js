@@ -1,4 +1,4 @@
-import { generateFakeRestaurantsAndReviews } from "@/src/lib/fakeRestaurants.js";
+import { generateFakeBadgesAndReviews } from "@/src/lib/fakeBadges.js";
 
 import {
 	collection,
@@ -18,13 +18,13 @@ import {
 
 import { db } from "@/src/lib/firebase/clientApp";
 
-export async function updateRestaurantImageReference(
-	restaurantId,
+export async function updateBadgeImageReference(
+	badgeId,
 	publicImageUrl
 ) {
-	const restaurantRef = doc(collection(db, "restaurants"), restaurantId);
-	if (restaurantRef) {
-		await updateDoc(restaurantRef, { photo: publicImageUrl });
+	const badgeRef = doc(collection(db, "badges"), badgeId);
+	if (badgeRef) {
+		await updateDoc(badgeRef, { photo: publicImageUrl });
 	}
 }
 
@@ -34,8 +34,8 @@ const updateWithRating = async (
 	newRatingDocument,
 	review
 ) => {
-	const restaurant = await transaction.get(docRef);
-	const data = restaurant.data();
+	const badge = await transaction.get(docRef);
+	const data = badge.data();
 	const newNumRatings = data?.numRatings ? data.numRatings + 1 : 1;
 	const newSumRating = (data?.sumRating || 0) + Number(review.rating);
 	const newAverage = newSumRating / newNumRatings;
@@ -52,9 +52,9 @@ const updateWithRating = async (
 	});
 };
 
-export async function addReviewToRestaurant(db, restaurantId, review) {
-	if (!restaurantId) {
-		throw new Error("No restaurant ID has been provided.");
+export async function addReviewToBadge(db, badgeId, review) {
+	if (!badgeId) {
+		throw new Error("No badge ID has been provided.");
 	}
 
 	if (!review) {
@@ -62,9 +62,9 @@ export async function addReviewToRestaurant(db, restaurantId, review) {
 	}
 
 	try {
-		const docRef = doc(collection(db, "restaurants"), restaurantId);
+		const docRef = doc(collection(db, "badges"), badgeId);
 		const newRatingDocument = doc(
-			collection(db, `restaurants/${restaurantId}/ratings`)
+			collection(db, `badges/${badgeId}/ratings`)
 		);
 
 		// corrected line
@@ -73,7 +73,7 @@ export async function addReviewToRestaurant(db, restaurantId, review) {
 		);
 	} catch (error) {
 		console.error(
-			"There was an error adding the rating to the restaurant",
+			"There was an error adding the rating to the badge",
 			error
 		);
 		throw error;
@@ -98,8 +98,8 @@ function applyQueryFilters(q, { category, city, price, sort }) {
 	return q;
 }
 
-export async function getRestaurants(db = db, filters = {}) {
-	let q = query(collection(db, "restaurants"));
+export async function getBadges(db = db, filters = {}) {
+	let q = query(collection(db, "badges"));
 
 	q = applyQueryFilters(q, filters);
 	const results = await getDocs(q);
@@ -113,13 +113,13 @@ export async function getRestaurants(db = db, filters = {}) {
 	});
 }
 
-export function getRestaurantsSnapshot(cb, filters = {}) {
+export function getBadgesSnapshot(cb, filters = {}) {
 	if (typeof cb !== "function") {
 		console.log("Error: The callback parameter is not a function");
 		return;
 	}
 
-	let q = query(collection(db, "restaurants"));
+	let q = query(collection(db, "badges"));
 	q = applyQueryFilters(q, filters);
 
 	const unsubscribe = onSnapshot(q, querySnapshot => {
@@ -138,12 +138,12 @@ export function getRestaurantsSnapshot(cb, filters = {}) {
 	return unsubscribe;
 }
 
-export async function getRestaurantById(db, restaurantId) {
-	if (!restaurantId) {
-		console.log("Error: Invalid ID received: ", restaurantId);
+export async function getBadgeById(db, badgeId) {
+	if (!badgeId) {
+		console.log("Error: Invalid ID received: ", badgeId);
 		return;
 	}
-	const docRef = doc(db, "restaurants", restaurantId);
+	const docRef = doc(db, "badges", badgeId);
 	const docSnap = await getDoc(docRef);
 	return {
 		...docSnap.data(),
@@ -151,9 +151,9 @@ export async function getRestaurantById(db, restaurantId) {
 	};
 }
 
-export function getRestaurantSnapshotById(restaurantId, cb) {
-	if (!restaurantId) {
-		console.log("Error: Invalid ID received: ", restaurantId);
+export function getBadgeSnapshotById(badgeId, cb) {
+	if (!badgeId) {
+		console.log("Error: Invalid ID received: ", badgeId);
 		return;
 	}
 
@@ -162,7 +162,7 @@ export function getRestaurantSnapshotById(restaurantId, cb) {
 		return;
 	}
 
-	const docRef = doc(db, "restaurants", restaurantId);
+	const docRef = doc(db, "badges", badgeId);
 	const unsubscribe = onSnapshot(docRef, docSnap => {
 		cb({
 			...docSnap.data(),
@@ -172,14 +172,14 @@ export function getRestaurantSnapshotById(restaurantId, cb) {
 	return unsubscribe;
 }
 
-export async function getReviewsByRestaurantId(db, restaurantId) {
-	if (!restaurantId) {
-		console.log("Error: Invalid restaurantId received: ", restaurantId);
+export async function getReviewsByBadgeId(db, badgeId) {
+	if (!badgeId) {
+		console.log("Error: Invalid badgeId received: ", badgeId);
 		return;
 	}
 
 	const q = query(
-		collection(db, "restaurants", restaurantId, "ratings"),
+		collection(db, "badges", badgeId, "ratings"),
 		orderBy("timestamp", "desc")
 	);
 
@@ -194,14 +194,14 @@ export async function getReviewsByRestaurantId(db, restaurantId) {
 	});
 }
 
-export function getReviewsSnapshotByRestaurantId(restaurantId, cb) {
-	if (!restaurantId) {
-		console.log("Error: Invalid restaurantId received: ", restaurantId);
+export function getReviewsSnapshotByBadgeId(badgeId, cb) {
+	if (!badgeId) {
+		console.log("Error: Invalid badgeId received: ", badgeId);
 		return;
 	}
 
 	const q = query(
-		collection(db, "restaurants", restaurantId, "ratings"),
+		collection(db, "badges", badgeId, "ratings"),
 		orderBy("timestamp", "desc")
 	);
 	const unsubscribe = onSnapshot(q, querySnapshot => {
@@ -218,21 +218,17 @@ export function getReviewsSnapshotByRestaurantId(restaurantId, cb) {
 	return unsubscribe;
 }
 
-export async function addFakeRestaurantsAndReviews() {
-	const data = await generateFakeRestaurantsAndReviews();
-	for (const { restaurantData, ratingsData } of data) {
+export async function addFakeBadgesAndReviews() {
+	const data = await generateFakeBadgesAndReviews();
+	console.log("Fake badges and reviews added: ", data);
+	for (const { badgeData } of data) {
 		try {
+			console.log('badgeData', badgeData)
 			const docRef = await addDoc(
-				collection(db, "restaurants"),
-				restaurantData
+				collection(db, "badges"),
+				badgeData
 			);
 
-			for (const ratingData of ratingsData) {
-				await addDoc(
-					collection(db, "restaurants", docRef.id, "ratings"),
-					ratingData
-				);
-			}
 		} catch (e) {
 			console.log("There was an error adding the document");
 			console.error("Error adding document: ", e);

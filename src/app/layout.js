@@ -6,9 +6,9 @@ import { getAuthenticatedAppForUser } from "@/src/lib/firebase/serverApp";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "FriendlyEats",
+  title: "Badges",
   description:
-    "FriendlyEats is a restaurant review website built with Next.js and Firebase.",
+    "Badges is an application for students to showcase their contributions and achievements through our codesapiens community.",
 };
 
 

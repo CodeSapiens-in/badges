@@ -6,7 +6,7 @@ import {
 	signOut,
 	onAuthStateChanged
 } from "@/src/lib/firebase/auth.js";
-import { addFakeRestaurantsAndReviews } from "@/src/lib/firebase/firestore.js";
+import { addFakeBadgesAndReviews } from "@/src/lib/firebase/firestore.js";
 import { useRouter } from "next/navigation";
 import { firebaseConfig } from "@/src/lib/firebase/config";
 
@@ -58,7 +58,7 @@ export default function Header({initialUser}) {
 
 	const handleSignOut = event => {
 		event.preventDefault();
-		signOut();
+		signOut(); 
 	};
 
 	const handleSignIn = event => {
@@ -69,8 +69,8 @@ export default function Header({initialUser}) {
 	return (
 		<header>
 			<Link href="/" className="logo">
-				<img src="/friendly-eats.svg" alt="FriendlyEats" />
-				Friendly Eats
+				<img src="/friendly-eats.svg" alt="Badges" />
+				Badges
 			</Link>
 			{user ? (
 				<>
@@ -88,9 +88,9 @@ export default function Header({initialUser}) {
 								<li>
 									<a
 										href="#"
-										onClick={addFakeRestaurantsAndReviews}
+										onClick={addFakeBadgesAndReviews}
 									>
-										Add sample restaurants
+										Add sample badges
 									</a>
 								</li>
 
