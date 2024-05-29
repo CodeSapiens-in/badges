@@ -76,7 +76,7 @@ export default function Header({initialUser}) {
 				<>
 					<div className="profile">
 						<p>
-							<img className="profileImage" src={user.photoURL || "/profile.svg"} alt={user.email} />
+							<img className="profileImage" src={user.photoURL || "/profile.svg"} alt={''} />
 							{user.displayName}
 						</p>
 

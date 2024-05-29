@@ -8,7 +8,7 @@ const BadgeDetails = ({
 }) => {
 	return (
 		<section className="relative h-400 w-full">
-			<img src={badge.photo} alt={badge.name} className="absolute object-cover w-full h-full max-w-none" />
+			<img src={badge.image} alt={badge.name} className="absolute object-cover w-full h-full max-w-none" />
 
 			<div className="details__container">
 				<div className="details">

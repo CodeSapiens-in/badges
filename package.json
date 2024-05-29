@@ -3,11 +3,12 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev -p 8082",
+		"dev": "next dev",
 		"build": "npm run build-service-worker && next build",
 		"build-service-worker": "npx esbuild auth-service-worker.js --bundle --outfile=public/auth-service-worker.js",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"build:css": "npx tailwindcss -i ./src/app/tailwindstyles.css -o ./dist/styles.css --watch"
 	},
 	"dependencies": {
 		"@google/generative-ai": "^0.10.0",

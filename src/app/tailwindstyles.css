@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,500;0,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+* {
+  @apply box-border p-0 m-0;
+}
+
+body {
+  @apply font-roboto;
+}
+
+ul {
+  @apply list-none;
+}
+
+h2 {
+  @apply font-normal;
+}
+
+/* Dialog Styles */
+dialog {
+  &[open] {
+    @apply fixed w-4/5 h-1/2 min-h-[270px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 border-0 rounded-lg shadow-lg;
+
+    & article {
+      @apply bg-transparent;
+    }
+  }
+
+  & form {
+    @apply flex flex-col justify-between h-full;
+  }
+
+  & footer {
+    @apply pr-5;
+  }
+
+  &::backdrop {
+    @apply bg-gray-200 opacity-80;
+  }
+}
+
+/* Footer Styles */
+footer {
+  & button {
+    @apply shadow text-uppercase text-base outline-0 border-0 p-2 cursor-pointer;
+  }
+
+  & .button--cancel {
+    @apply text-gray-400 bg-white rounded;
+  }
+
+  & .button--confirm {
+    @apply bg-orange-500 text-white rounded;
+  }
+
+  & menu {
+    @apply flex justify-end py-5 gap-5;
+  }
+}
+
+/* Header Styles */
+header {
+  @apply bg-blue-900 text-white flex justify-between p-2 items-center;
+
+  & img {
+    @apply h-8;
+  }
+
+  & ul {
+    @apply hidden absolute w-[220px] z-50;
+  }
+
+  & a {
+    @apply no-underline text-white;
+  }
+
+  .profileImage {
+    @apply rounded-full border-2 border-white mr-2;
+  }
+}
+
+/* Logo Styles */
+.logo {
+  @apply flex items-center text-white no-underline text-xl font-medium;
+
+  & img {
+    @apply mr-2.5;
+  }
+}
+
+/* Menu Styles */
+.menu {
+  @apply inline-block relative p-4 self-stretch;
+
+  & ul {
+    /* @apply block; Uncomment if needed */
+    @apply absolute left-[-90%] text-blue-900 bg-white shadow-lg;
+
+    & li {
+      @apply p-2.5 border-b border-blue-400/25;
+    }
+
+    & a {
+      @apply font-bold;
+    }
+
+    & li:hover {
+      @apply bg-blue-400/5;
+    }
+
+    & a:visited {
+      @apply text-current;
+    }
+  }
+
+  &:hover ul {
+    @apply block;
+  }
+}
+
+/* Profile Styles */
+.profile {
+  @apply flex;
+
+  & p, & a {
+    @apply flex items-center;
+  }
+}
+
+/* Main Home and Badge Styles */
+.main__home {
+  @apply bg-blue-400 min-h-screen;
+}
+
+.main__badge {
+  @apply bg-gray-200 min-h-[90vh];
+}
+
+/* Article Styles */
+article {
+  @apply mx-auto bg-gray-200 p-5 w-3/4;
+}
+
+/* Badges Styles */
+.badges {
+  @apply grid mt-5 gap-10;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  & li {
+    @apply bg-white max-w-[300px];
+  }
+
+  & a {
+    @apply text-black flex flex-col flex-1;
+  }
+
+  & h2 {
+    @apply font-normal;
+  }
+}
+
+/* Image Cover Styles */
+.image-cover {
+  @apply w-full h-full object-cover max-h-[300px] min-h-[300px] relative;
+
+  & img {
+    @apply w-full h-full object-cover absolute;
+  }
+}
+
+/* Badge Meta Styles */
+.badge__meta {
+  @apply flex font-medium justify-between items-center mb-2.5;
+}
+
+/* Badge Details Styles */
+.badge__details {
+  @apply p-5;
+}
+
+/* Badge Rating Styles */
+.badge__rating {
+  @apply py-1 flex items-center;
+
+  & ul {
+    @apply flex;
+  }
+
+  & svg {
+    @apply w-8 h-8 text-yellow-400;
+  }
+
+  & span {
+    @apply text-gray-400;
+  }
+}
+
+/* Badge Review Summary Styles */
+.badge__review_summary {
+  @apply max-w-[50vw] h-[75px] pt-2.5;
+}
+
+/* Image Section Styles */
+.img__section {
+  @apply w-full h-[400px] relative;
+
+  > img {
+    @apply w-full h-full object-cover absolute max-w-none;
+  }
+}
+
+/* Details Styles */
+.details {
+  @apply absolute bottom-0 p-5 text-white;
+
+  & span {
+    @apply text-inherit;
+  }
+}
+
+/* Details Container Styles */
+.details__container {
+  @apply bg-gradient-to-tr from-pink-600 to-transparent absolute inset-0 bg-opacity-50;
+}
+
+/* Reviews Styles */
+.reviews {
+  & .review__item {
+    @apply p-10 border-b border-gray-400/25;
+  }
+
+  & time {
+    @apply text-sm text-gray-600;
+  }
+}
+
+/* Actions Styles */
+.actions {
+  @apply absolute z-10 bottom-[-30px] right-0 flex justify-end;
+
+  & img {
+    @apply h-16;
+  }
+
+  .review {
+    @apply cursor-pointer bg-yellow-400 rounded-lg shadow;
+  }
+
+  .add {
+    @apply cursor-pointer bg-orange-500 rounded-full shadow h-16;
+
+    input {
+      @apply hidden;
+    }
+  }
+
+  &:where(.review, .add) {
+    @apply mx-7.5;
+  }
+}
+
+/* Review Input Styles */
+#review {
+  @apply p-5 text-lg border-none border-b-2 border-orange-500 w-full;
+}
+
+/* Star Rating Styles */
+.star-rating {
+  @apply flex flex-row-reverse justify-end;
+}
+
+.radio-input {
+  @apply fixed opacity-0 pointer-events-none;
+}
+
+.radio-label {
+  @apply cursor-pointer text-0 text-gray-400 transition-colors duration-100;
+
+  &::before {
+    @apply content-['★'] inline-block text-[32px];
+  }
+
+  &:hover, &:hover ~ .radio-label {
+    @apply text-goldenrod;
+  }
+
+  .radio-input:checked ~ & {
+    @apply text-yellow-400;
+  }
+
+  .radio-input:checked + &:hover, .radio-input:checked + &:hover ~ .radio-label, .radio-input:checked ~ &:hover, .radio-input:checked ~ &:hover ~ .radio-label, &:hover ~ .radio-input:checked ~ & {
+    @apply text-darkgoldenrod;
+  }
+}
+
+/* Average Rating Styles */
+.average-rating {
+  @apply relative appearance-none text-transparent w-auto inline-block align-baseline text-[25px];
+
+  &::before {
+    @apply content-['★★★★★'] absolute top-0 left-0 text-gray-400;
+    --percent: calc(4.3 / 5 * 100%);
+    background: linear-gradient(90deg, gold var(--percent), text-gray-400 var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Rating Picker Styles */
+.rating-picker {
+  @apply flex flex-row-reverse justify-center;
+}
+
+/* Filter Menu Styles */
+.filter-menu {
+  @apply bg-white rounded border-b border-blue-900;
+
+  & summary {
+    @apply font-bold cursor-pointer flex items-center;
+  }
+
+  & form {
+    @apply flex flex-col p-5 pt-0;
+  }
+
+  & label {
+    @apply p-2.5 flex flex-col flex-grow text-gray-600 text-sm leading-4;
+  }
+
+  & img {
+    @apply h-16 max-w-full;
+  }
+
+  & form div {
+    @apply flex gap-2.5;
+  }
+
+  & select {
+    @apply text-gray-800 text-sm leading-5 pt-4 pb-2 pl-2.5 pr-2.5 border-0 border-b-2 border-solid border-gray-200;
+  }
+
+  & p:first-child {
+    @apply font-light text-xl leading-7 mb-0.5;
+  }
+
+  & p:last-child {
+    @apply text-blue-900 font-semibold text-sm leading-5;
+  }
+}
+
+/* Filter Styles */
+.filter {
+  @apply mx-auto;
+}
+
+/* Tags Styles */
+.tags {
+  @apply flex flex-wrap gap-2.5 my-7.5;
+
+  & span {
+    @apply font-medium leading-5 py-1 px-2 bg-blue-900 rounded-full text-white text-[0.95rem];
+  }
+
+  & button {
+    @apply cursor-pointer ml-1.25 p-0.5 text-white bg-transparent outline-none border-none text-sm;
+  }
+}

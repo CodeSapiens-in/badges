@@ -8004,7 +8004,7 @@
       throw new Error("Firebase Config object not found in service worker query string.");
     }
     firebaseConfig = JSON.parse(serializedFirebaseConfig);
-    console.log("Service worker installed with Firebase config", firebaseConfig);
+    // console.log("Service worker installed with Firebase config", firebaseConfig);
   });
   self.addEventListener("fetch", (event) => {
     const { origin } = new URL(event.request.url);
@@ -8013,6 +8013,7 @@
     event.respondWith(fetchWithFirebaseHeaders(event.request));
   });
   async function fetchWithFirebaseHeaders(request) {
+    console.log('service worker',firebaseConfig);
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const installations = getInstallations(app);

@@ -107,8 +107,6 @@ export async function getBadges(db = db, filters = {}) {
 		return {
 			id: doc.id,
 			...doc.data(),
-			// Only plain objects can be passed to Client Components from Server Components
-			timestamp: doc.data().timestamp.toDate(),
 		};
 	});
 }
@@ -147,7 +145,7 @@ export async function getBadgeById(db, badgeId) {
 	const docSnap = await getDoc(docRef);
 	return {
 		...docSnap.data(),
-		timestamp: docSnap.data().timestamp.toDate(),
+		// timestamp: docSnap.data().timestamp.toDate(),
 	};
 }
 

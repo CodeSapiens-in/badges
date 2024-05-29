@@ -16,7 +16,7 @@ const BadgeItem = ({ badge }) => (
 
 const ActiveBadge = ({ badge }) => (
 	<div>
-		<ImageCover photo={badge.photo} name={badge.name} />
+		<ImageCover photo={badge.image} name={badge.name} />
 		<BadgeDetails badge={badge} />
 	</div>
 );
@@ -30,7 +30,7 @@ const ImageCover = ({ photo, name }) => (
 const BadgeDetails = ({ badge }) => (
 	<div className="badge__details">
 		<h2>{badge.name}</h2>
-		<BadgeMetadata badge={badge} />
+		{/* <BadgeMetadata badge={badge} /> */}
 	</div>
 );
 
