@@ -13,8 +13,7 @@ export default async function Home({ params }) {
     <main className="bg-gray-200 min-h-screen">
       <Badge
         id={params.id}
-        initialBadge={badge}
-        initialUserId={currentUser?.uid || ""}
+        badge={badge}
       >
        
       </Badge>

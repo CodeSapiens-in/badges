@@ -141,7 +141,7 @@ export async function getBadgeById(db, badgeId) {
 		console.log("Error: Invalid ID received: ", badgeId);
 		return;
 	}
-	const docRef = doc(db, "badges", badgeId);
+	const docRef = doc(db, "userbadges", badgeId);
 	const docSnap = await getDoc(docRef);
 	return {
 		...docSnap.data(),

@@ -3,54 +3,33 @@
 // This components shows one individual badge
 // It receives data from src/app/badge/[id]/page.jsx
 
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 
-import {
-  getBadgeSnapshotById,
-} from "@/src/lib/firebase/firestore.js";
-import {useUser} from '@/src/lib/getUser'
-import BadgeDetails from "@/src/components/BadgeDetails.jsx";
-import { updateBadgeImage } from "@/src/lib/firebase/storage.js";
+import styles from "./Badge.module.css";
+
 
 export default function Badge({
-  id,
-  initialBadge,
-  initialUserId,
-  children
+  badgeId,
+  badge
 }) {
-  const [badgeDetails, setBadgeDetails] = useState(initialBadge);
-  const [isOpen, setIsOpen] = useState(false);
-
-  // The only reason this component needs to know the user ID is to associate a review with the user, and to know whether to show the review dialog
-  const userId = useUser()?.uid || initialUserId;
-
-  async function handleBadgeImage(target) {
-    const image = target.files ? target.files[0] : null;
-    if (!image) {
-      return;
-    }
-
-    const imageURL = await updateBadgeImage(id, image);
-    setBadgeDetails({ ...badge, photo: imageURL });
-  }
-
-
-
-  useEffect(() => {
-    const unsubscribeFromBadge = getBadgeSnapshotById(id, (data) => {
-      setBadgeDetails(data);
-    });
-
-    return () => {
-      unsubscribeFromBadge();
-    };
-  }, []);
-
+  console.log('badgeid',badgeId)
+  console.log(badge)
   return (
-    <>
-      <BadgeDetails
-        badge={badgeDetails}
-      >{children}</BadgeDetails>
-    </>
+    <div className={styles.badgeContainer}>
+      <div className={styles.heading}>
+        <span className={styles.username}>{badge.user}</span> was awarded this badge on {badge.assignedon}.
+        <br />
+        The unique Badge ID is <span className={styles.badgeId}>{badgeId}</span>.
+      </div>
+      <div className={styles.content}>
+        <div className={styles.imageContainer}>
+          <img src={badge.image} alt="Badge" className={styles.badgeImage} />
+        </div>
+        <div className={styles.descriptionContainer}>
+          <h2 className={styles.title}>{badge.name}</h2>
+          <p className={styles.description}>{badge.description}</p>
+        </div>
+      </div>
+    </div>
   );
 }
